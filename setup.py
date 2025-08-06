@@ -6,7 +6,7 @@ def get_build_ext_modules():
     import torch
     import torch.utils.cpp_extension as torch_cpp_ext
 
-    if torch.backends.cuda.is_built() and int(os.environ.get("TLA_BUILD_CUDA", "1")) and torch.cuda.is_available():
+    if torch.backends.cuda.is_built():
         compile_args = {"cxx": ["-O3"]}
         if os.environ.get("CC", None) is not None:
             compile_args["nvcc"] = ["-ccbin", os.environ["CC"]]
